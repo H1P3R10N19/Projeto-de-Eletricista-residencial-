@@ -10,39 +10,38 @@ const About: React.FC = () => {
             <div className="relative">
               <img 
                 src="https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?q=80&w=800&h=600&auto=format&fit=crop" 
-                alt="Quadro elétrico residencial extremamente organizado" 
-                className="rounded-2xl shadow-2xl grayscale hover:grayscale-0 transition-all duration-700 object-cover w-full h-[400px] md:h-[500px]"
+                alt="Quadro elétrico profissional e organizado" 
+                className="rounded shadow-2xl grayscale hover:grayscale-0 transition-all duration-700 object-cover w-full h-[400px]"
               />
-              <div className="absolute -bottom-6 -right-6 bg-yellow-400 p-6 md:p-8 rounded-2xl shadow-xl hidden lg:flex items-center justify-center max-w-[200px]">
-                <span className="text-slate-900 font-black uppercase text-center text-sm md:text-base leading-tight">
-                  Longos anos de experiência
-                </span>
+              <div className="absolute -bottom-4 -left-4 bg-slate-900 p-6 rounded shadow-xl border-l-4 border-yellow-400">
+                <span className="text-white font-bold block">Dutra Instalações</span>
+                <span className="text-yellow-400 text-xs font-black uppercase">Padrão de Qualidade</span>
               </div>
             </div>
           </div>
           
           <div className="w-full md:w-1/2">
-            <h2 className="text-slate-900 text-4xl font-extrabold mb-6 leading-tight">
-              Compromisso com a <br/>Excelência Técnica
+            <span className="text-yellow-500 font-black text-xs uppercase tracking-[0.3em] mb-4 block">Institucional</span>
+            <h2 className="text-slate-900 text-4xl font-extrabold mb-8 leading-tight">
+              Confiança, Organização <br/>e Segurança Total
             </h2>
-            <div className="w-20 h-1.5 bg-yellow-400 mb-8"></div>
             <p className="text-slate-600 text-lg mb-6 leading-relaxed">
-              Com mais de uma década de atuação no mercado carioca, foco meu trabalho na segurança e no bem-estar de cada família. Especializado em normas técnicas, garanto que cada fio e disjuntor em sua casa esteja em perfeito estado.
+              A <strong>Dutra Instalações Elétrica</strong> é referência em serviços técnicos de alta precisão no Rio de Janeiro. Nosso foco principal é garantir que cada sistema elétrico opere com 100% de segurança, eliminando riscos de sobrecarga e curto-circuitos.
             </p>
             <p className="text-slate-600 text-lg mb-8 leading-relaxed">
-              Diferente de amadores, prezo pela organização total do canteiro de serviço, pontualidade britânica e transparência total no orçamento. Sua casa merece um profissional que respeita seu espaço.
+              Atuamos com destaque na região da <strong>Taquara (Boiuna)</strong> e atendemos clientes que buscam não apenas um eletricista, mas um parceiro técnico que preza pela limpeza, pontualidade e transparência nos orçamentos.
             </p>
             
-            <ul className="space-y-4 mb-10">
-              {['Certificado Técnico Profissional', 'Atendimento em toda Região Sul e Barra', 'Disponibilidade para Emergências', 'Uso de materiais de primeira linha'].map((item, idx) => (
-                <li key={idx} className="flex items-center gap-3 text-slate-900 font-semibold">
-                  <svg className="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                  {item}
-                </li>
-              ))}
-            </ul>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="border-l-2 border-slate-200 pl-4 py-2">
+                <span className="block font-black text-slate-900 uppercase text-xs">Atuação</span>
+                <span className="text-slate-500 text-sm">Rio de Janeiro / RJ</span>
+              </div>
+              <div className="border-l-2 border-slate-200 pl-4 py-2">
+                <span className="block font-black text-slate-900 uppercase text-xs">Foco</span>
+                <span className="text-slate-500 text-sm">Organização Técnica</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
