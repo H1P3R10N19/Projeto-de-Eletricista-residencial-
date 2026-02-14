@@ -22,10 +22,21 @@ const Navbar: React.FC = () => {
           
           <div className="hidden md:block">
             <div className="flex items-center space-x-8 font-bold text-xs uppercase tracking-widest text-slate-600">
-              <a href="#home" className="hover:text-[#1B2588] transition-colors py-2 border-b-2 border-transparent hover:border-[#F1B524]">Home</a>
-              <a href="#sobre" className="hover:text-[#1B2588] transition-colors py-2 border-b-2 border-transparent hover:border-[#F1B524]">Sobre</a>
-              <a href="#servicos" className="hover:text-[#1B2588] transition-colors py-2 border-b-2 border-transparent hover:border-[#F1B524]">Serviços</a>
-              <a href="#contato" className="hover:text-[#1B2588] transition-colors py-2 border-b-2 border-transparent hover:border-[#F1B524]">Contato</a>
+              {[
+                { label: 'Home', href: '#home' },
+                { label: 'Sobre', href: '#sobre' },
+                { label: 'Serviços', href: '#servicos' },
+                { label: 'Contato', href: '#contato' }
+              ].map((link) => (
+                <a 
+                  key={link.label}
+                  href={link.href} 
+                  className="group relative py-2 hover:text-[#1B2588] transition-colors duration-300"
+                >
+                  {link.label}
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#F1B524] transition-all duration-300 group-hover:w-full"></span>
+                </a>
+              ))}
             </div>
           </div>
 
