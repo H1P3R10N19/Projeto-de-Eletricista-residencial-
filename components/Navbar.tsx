@@ -3,27 +3,29 @@ import React from 'react';
 
 const Navbar: React.FC = () => {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-900 text-white shadow-md border-b border-slate-800">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white text-slate-900 shadow-md border-b border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          <div className="flex-shrink-0 flex items-center space-x-2">
-            <div className="bg-yellow-400 p-1.5 rounded">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-slate-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M13 10V3L4 14h7v7l9-11h-7z" />
+          <div className="flex-shrink-0">
+            <a href="#home" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+              <svg width="45" height="45" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+                <circle cx="50" cy="40" r="35" stroke="#F1B524" strokeWidth="4" />
+                <path d="M45 65 Q50 75 55 65 L45 80 Q50 90 55 80" stroke="#F1B524" strokeWidth="4" strokeLinecap="round" />
+                <path d="M55 25 L40 45 L52 45 L45 60 L60 40 L48 40 L55 25Z" fill="#F1B524" />
               </svg>
-            </div>
-            <div className="flex flex-col">
-              <span className="font-extrabold text-lg leading-none">DUTRA</span>
-              <span className="text-[10px] uppercase tracking-widest text-yellow-400 font-bold">Instalações Elétrica</span>
-            </div>
+              <div className="flex flex-col">
+                <span className="text-[#1B2588] font-black text-2xl leading-none tracking-tight">DUTRA</span>
+                <span className="text-[#1B2588] text-[8px] font-bold uppercase tracking-[0.2em] -mt-0.5">Instalações Elétrica</span>
+              </div>
+            </a>
           </div>
           
           <div className="hidden md:block">
-            <div className="flex items-center space-x-8 font-semibold text-sm uppercase tracking-wide">
-              <a href="#home" className="hover:text-yellow-400 transition-colors">Home</a>
-              <a href="#sobre" className="hover:text-yellow-400 transition-colors">Sobre</a>
-              <a href="#servicos" className="hover:text-yellow-400 transition-colors">Serviços</a>
-              <a href="#contato" className="hover:text-yellow-400 transition-colors">Contato</a>
+            <div className="flex items-center space-x-8 font-bold text-xs uppercase tracking-widest text-slate-600">
+              <a href="#home" className="hover:text-[#1B2588] transition-colors py-2 border-b-2 border-transparent hover:border-[#F1B524]">Home</a>
+              <a href="#sobre" className="hover:text-[#1B2588] transition-colors py-2 border-b-2 border-transparent hover:border-[#F1B524]">Sobre</a>
+              <a href="#servicos" className="hover:text-[#1B2588] transition-colors py-2 border-b-2 border-transparent hover:border-[#F1B524]">Serviços</a>
+              <a href="#contato" className="hover:text-[#1B2588] transition-colors py-2 border-b-2 border-transparent hover:border-[#F1B524]">Contato</a>
             </div>
           </div>
 
@@ -32,7 +34,7 @@ const Navbar: React.FC = () => {
               href="https://wa.me/5521989714357" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="bg-yellow-400 text-slate-900 px-5 py-2 rounded font-bold text-xs uppercase tracking-wider hover:bg-yellow-300 transition-all flex items-center gap-2"
+              className="bg-[#1B2588] text-white px-6 py-2.5 rounded font-black text-xs uppercase tracking-widest hover:bg-blue-900 transition-all shadow-lg shadow-blue-900/20"
             >
               WhatsApp
             </a>
