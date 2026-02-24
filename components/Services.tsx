@@ -13,7 +13,7 @@ const Services: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           
           {/* BLOCO A: SERVIÇOS GERAIS */}
-          <div className="group bg-white p-8 rounded-xl shadow-sm border-t-4 border-slate-900 transition-all duration-300 ease-in-out hover:-translate-y-2 hover:scale-[1.01] hover:shadow-xl hover:shadow-slate-300/50 cursor-pointer">
+          <div className="group bg-white p-8 rounded-xl shadow-sm border-t-4 border-slate-900 transition-all duration-300 ease-in-out hover:-translate-y-2 hover:scale-[1.01] hover:shadow-xl hover:shadow-slate-300/50 cursor-pointer fade-in-up">
             <h3 className="text-xl font-black text-slate-900 mb-6 uppercase tracking-tight flex items-center gap-2">
               <span className="text-yellow-500 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6">01.</span> Elétrica em Geral
             </h3>
@@ -29,7 +29,7 @@ const Services: React.FC = () => {
           </div>
 
           {/* BLOCO B: SEGMENTOS */}
-          <div className="group bg-slate-900 p-8 rounded-xl shadow-lg text-white transition-all duration-300 ease-in-out hover:-translate-y-2 hover:scale-[1.01] hover:shadow-2xl hover:shadow-blue-900/20 cursor-pointer">
+          <div className="group bg-slate-900 p-8 rounded-xl shadow-lg text-white transition-all duration-300 ease-in-out hover:-translate-y-2 hover:scale-[1.01] hover:shadow-2xl hover:shadow-blue-900/20 cursor-pointer fade-in-up [animation-delay:200ms]">
             <h3 className="text-xl font-black text-white mb-6 uppercase tracking-tight flex items-center gap-2">
               <span className="text-yellow-400 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-6">02.</span> Segmentos
             </h3>
@@ -46,7 +46,7 @@ const Services: React.FC = () => {
           </div>
 
           {/* BLOCO C: MATERIAIS */}
-          <div className="group bg-white p-8 rounded-xl shadow-sm border-t-4 border-yellow-400 transition-all duration-300 ease-in-out hover:-translate-y-2 hover:scale-[1.01] hover:shadow-xl hover:shadow-yellow-400/10 cursor-pointer">
+          <div className="group bg-white p-8 rounded-xl shadow-sm border-t-4 border-yellow-400 transition-all duration-300 ease-in-out hover:-translate-y-2 hover:scale-[1.01] hover:shadow-xl hover:shadow-yellow-400/10 cursor-pointer fade-in-up [animation-delay:400ms]">
             <h3 className="text-xl font-black text-slate-900 mb-6 uppercase tracking-tight flex items-center gap-2">
               <span className="text-yellow-500 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6">03.</span> Materiais Elétricos
             </h3>

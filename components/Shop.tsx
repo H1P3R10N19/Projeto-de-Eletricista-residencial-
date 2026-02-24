@@ -1,6 +1,5 @@
 
 import React, { useState, useMemo } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
 import { 
   ShoppingBag, 
   Check, 
@@ -236,28 +235,17 @@ const Shop: React.FC = () => {
         
         {/* Header */}
         <div className="text-center mb-16">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-4xl font-black text-[#1B2588] mb-4 uppercase tracking-tight"
-          >
+          <h2 className="text-4xl font-black text-[#1B2588] mb-4 uppercase tracking-tight fade-in-up">
             Loja de Materiais Elétricos
-          </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-slate-600 max-w-2xl mx-auto text-lg"
-          >
+          </h2>
+          <p className="text-slate-600 max-w-2xl mx-auto text-lg fade-in-up [animation-delay:200ms]">
             Escolha um de nossos combos prontos e economize tempo e dinheiro na sua reforma. 
             Praticidade e segurança para sua casa.
-          </motion.p>
+          </p>
         </div>
 
         {/* Filters */}
-        <div className="flex flex-col md:flex-row justify-between items-center mb-12 gap-6 bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+        <div className="flex flex-col md:flex-row justify-between items-center mb-12 gap-6 bg-white p-6 rounded-2xl shadow-sm border border-slate-100 fade-in">
           <div className="flex items-center gap-4 overflow-x-auto pb-2 md:pb-0 w-full md:w-auto no-scrollbar">
             <Filter className="w-5 h-5 text-slate-400 flex-shrink-0" />
             {CATEGORIES.map(cat => (
@@ -291,13 +279,10 @@ const Shop: React.FC = () => {
         {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {filteredPackages.map((pkg, idx) => (
-            <motion.div
+            <div
               key={pkg.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.05 }}
-              className="bg-white rounded-3xl p-6 shadow-xl shadow-slate-200/50 border border-slate-100 flex flex-col group hover:border-[#F1B524] transition-all duration-300"
+              className="bg-white rounded-3xl p-6 shadow-xl shadow-slate-200/50 border border-slate-100 flex flex-col group hover:border-[#F1B524] transition-all duration-300 fade-in-up"
+              style={{ animationDelay: `${idx * 50}ms` }}
             >
               <div className="mb-4 flex justify-between items-start">
                 <div className="p-3 bg-slate-50 rounded-2xl group-hover:bg-yellow-50 transition-colors">
@@ -361,7 +346,7 @@ const Shop: React.FC = () => {
                   </button>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
@@ -381,20 +366,11 @@ const Shop: React.FC = () => {
                   <span className="font-bold text-slate-800">{item.q}</span>
                   {openFaqIndex === idx ? <ChevronUp className="w-5 h-5 text-[#F1B524]" /> : <ChevronDown className="w-5 h-5 text-slate-400" />}
                 </button>
-                <AnimatePresence>
-                  {openFaqIndex === idx && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      className="overflow-hidden"
-                    >
-                      <div className="p-6 pt-0 text-slate-600 text-sm leading-relaxed border-t border-slate-50">
-                        {item.a}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                {openFaqIndex === idx && (
+                  <div className="p-6 pt-0 text-slate-600 text-sm leading-relaxed border-t border-slate-50 fade-in">
+                    {item.a}
+                  </div>
+                )}
               </div>
             ))}
           </div>
@@ -433,171 +409,148 @@ const Shop: React.FC = () => {
       </div>
 
       {/* Package Details Modal */}
-      <AnimatePresence>
-        {selectedPackage && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setSelectedPackage(null)}
-              className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm"
-            />
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="relative bg-white rounded-3xl w-full max-w-lg overflow-hidden shadow-2xl"
-            >
-              <div className="p-8">
-                <div className="flex justify-between items-start mb-6">
-                  <div>
-                    <span className="text-[10px] font-black uppercase tracking-widest text-[#F1B524] mb-1 block">
-                      {selectedPackage.categoria}
-                    </span>
-                    <h3 className="text-2xl font-black text-[#1B2588] leading-tight">
-                      {selectedPackage.nome}
-                    </h3>
-                  </div>
-                  <button 
-                    onClick={() => setSelectedPackage(null)}
-                    className="p-2 hover:bg-slate-100 rounded-full transition-colors"
-                  >
-                    <X className="w-6 h-6 text-slate-400" />
-                  </button>
-                </div>
-                
-                <div className="space-y-6">
-                  <div>
-                    <h4 className="text-xs font-black uppercase tracking-widest text-slate-400 mb-4">Lista Completa de Itens:</h4>
-                    <div className="bg-slate-50 rounded-2xl p-6 space-y-3">
-                      {selectedPackage.itens.map((item, i) => (
-                        <div key={i} className="flex justify-between items-center text-sm">
-                          <span className="text-slate-700 font-medium">{item.produto}</span>
-                          <span className="font-black text-[#1B2588] bg-white px-3 py-1 rounded-lg shadow-sm border border-slate-100">
-                            {item.qtd} {item.unidade}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-between pt-6 border-t border-slate-100">
-                    <div>
-                      <div className="text-xs font-bold text-slate-400 uppercase tracking-widest">Preço do Combo:</div>
-                      <div className="text-3xl font-black text-slate-900">
-                        R$ {selectedPackage.preco.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
-                      </div>
-                    </div>
-                    <button 
-                      onClick={() => {
-                        addToCart(selectedPackage);
-                        setSelectedPackage(null);
-                      }}
-                      className="bg-[#1B2588] text-white px-8 py-4 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-blue-900 transition-all shadow-xl shadow-blue-900/20 flex items-center gap-3"
-                    >
-                      <ShoppingBag className="w-5 h-5" />
-                      Adicionar
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
-
-      {/* Cart Drawer */}
-      <AnimatePresence>
-        {isCartOpen && (
-          <div className="fixed inset-0 z-[110] flex justify-end">
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setIsCartOpen(false)}
-              className="absolute inset-0 bg-slate-900/40 backdrop-blur-sm"
-            />
-            <motion.div 
-              initial={{ x: '100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '100%' }}
-              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="relative bg-white w-full max-w-md h-full shadow-2xl flex flex-col"
-            >
-              <div className="p-8 border-b border-slate-100 flex justify-between items-center">
-                <div className="flex items-center gap-3">
-                  <div className="p-2 bg-blue-50 rounded-lg">
-                    <ShoppingCart className="w-6 h-6 text-[#1B2588]" />
-                  </div>
-                  <h3 className="text-xl font-black text-[#1B2588] uppercase tracking-tight">Seu Carrinho</h3>
+      {selectedPackage && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+          <div 
+            onClick={() => setSelectedPackage(null)}
+            className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm fade-in"
+          />
+          <div className="relative bg-white rounded-3xl w-full max-w-lg overflow-hidden shadow-2xl fade-in-up">
+            <div className="p-8">
+              <div className="flex justify-between items-start mb-6">
+                <div>
+                  <span className="text-[10px] font-black uppercase tracking-widest text-[#F1B524] mb-1 block">
+                    {selectedPackage.categoria}
+                  </span>
+                  <h3 className="text-2xl font-black text-[#1B2588] leading-tight">
+                    {selectedPackage.nome}
+                  </h3>
                 </div>
                 <button 
-                  onClick={() => setIsCartOpen(false)}
+                  onClick={() => setSelectedPackage(null)}
                   className="p-2 hover:bg-slate-100 rounded-full transition-colors"
                 >
                   <X className="w-6 h-6 text-slate-400" />
                 </button>
               </div>
-
-              <div className="flex-grow overflow-y-auto p-8 space-y-6">
-                {cart.length === 0 ? (
-                  <div className="text-center py-20">
-                    <div className="w-20 h-20 bg-slate-50 rounded-full flex items-center justify-center mx-auto mb-6">
-                      <ShoppingBag className="w-10 h-10 text-slate-200" />
-                    </div>
-                    <p className="text-slate-400 font-bold uppercase text-xs tracking-widest mb-2">Seu carrinho está vazio</p>
-                    <p className="text-slate-500 text-sm">Que tal começar com um Kit Essencial?</p>
+              
+              <div className="space-y-6">
+                <div>
+                  <h4 className="text-xs font-black uppercase tracking-widest text-slate-400 mb-4">Lista Completa de Itens:</h4>
+                  <div className="bg-slate-50 rounded-2xl p-6 space-y-3">
+                    {selectedPackage.itens.map((item, i) => (
+                      <div key={i} className="flex justify-between items-center text-sm">
+                        <span className="text-slate-700 font-medium">{item.produto}</span>
+                        <span className="font-black text-[#1B2588] bg-white px-3 py-1 rounded-lg shadow-sm border border-slate-100">
+                          {item.qtd} {item.unidade}
+                        </span>
+                      </div>
+                    ))}
                   </div>
-                ) : (
-                  cart.map((item, idx) => (
-                    <div key={idx} className="flex gap-4 p-4 bg-slate-50 rounded-2xl border border-slate-100 group">
-                      <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center shadow-sm flex-shrink-0">
-                        {item.icon}
-                      </div>
-                      <div className="flex-grow">
-                        <h4 className="font-bold text-slate-800 text-sm leading-tight mb-1">{item.nome}</h4>
-                        <div className="text-[#1B2588] font-black text-sm">R$ {item.preco.toFixed(2)}</div>
-                      </div>
-                      <button 
-                        onClick={() => removeFromCart(idx)}
-                        className="p-2 h-fit text-slate-300 hover:text-red-500 transition-colors"
-                      >
-                        <X className="w-4 h-4" />
-                      </button>
-                    </div>
-                  ))
-                )}
-              </div>
+                </div>
 
-              {cart.length > 0 && (
-                <div className="p-8 bg-slate-50 border-t border-slate-100">
-                  <div className="flex justify-between items-center mb-6">
-                    <span className="text-slate-500 font-bold uppercase text-xs tracking-widest">Total Estimado</span>
-                    <span className="text-2xl font-black text-slate-900">R$ {totalCart.toFixed(2)}</span>
+                <div className="flex items-center justify-between pt-6 border-t border-slate-100">
+                  <div>
+                    <div className="text-xs font-bold text-slate-400 uppercase tracking-widest">Preço do Combo:</div>
+                    <div className="text-3xl font-black text-slate-900">
+                      R$ {selectedPackage.preco.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+                    </div>
                   </div>
                   <button 
-                    onClick={handleCheckout}
-                    className="w-full bg-[#1B2588] text-white py-5 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-blue-900 transition-all shadow-xl shadow-blue-900/20 flex items-center justify-center gap-3"
+                    onClick={() => {
+                      addToCart(selectedPackage);
+                      setSelectedPackage(null);
+                    }}
+                    className="bg-[#1B2588] text-white px-8 py-4 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-blue-900 transition-all shadow-xl shadow-blue-900/20 flex items-center gap-3"
                   >
-                    <MessageCircle className="w-5 h-5" />
-                    Finalizar via WhatsApp
+                    <ShoppingBag className="w-5 h-5" />
+                    Adicionar
                   </button>
-                  <p className="text-center text-[10px] text-slate-400 mt-4 uppercase font-bold tracking-widest">
-                    O pagamento e entrega serão combinados no chat.
-                  </p>
                 </div>
-              )}
-            </motion.div>
+              </div>
+            </div>
           </div>
-        )}
-      </AnimatePresence>
+        </div>
+      )}
+
+      {/* Cart Drawer */}
+      {isCartOpen && (
+        <div className="fixed inset-0 z-[110] flex justify-end">
+          <div 
+            onClick={() => setIsCartOpen(false)}
+            className="absolute inset-0 bg-slate-900/40 backdrop-blur-sm fade-in"
+          />
+          <div className="relative bg-white w-full max-w-md h-full shadow-2xl flex flex-col fade-in">
+            <div className="p-8 border-b border-slate-100 flex justify-between items-center">
+              <div className="flex items-center gap-3">
+                <div className="p-2 bg-blue-50 rounded-lg">
+                  <ShoppingCart className="w-6 h-6 text-[#1B2588]" />
+                </div>
+                <h3 className="text-xl font-black text-[#1B2588] uppercase tracking-tight">Seu Carrinho</h3>
+              </div>
+              <button 
+                onClick={() => setIsCartOpen(false)}
+                className="p-2 hover:bg-slate-100 rounded-full transition-colors"
+              >
+                <X className="w-6 h-6 text-slate-400" />
+              </button>
+            </div>
+
+            <div className="flex-grow overflow-y-auto p-8 space-y-6">
+              {cart.length === 0 ? (
+                <div className="text-center py-20">
+                  <div className="w-20 h-20 bg-slate-50 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <ShoppingBag className="w-10 h-10 text-slate-200" />
+                  </div>
+                  <p className="text-slate-400 font-bold uppercase text-xs tracking-widest mb-2">Seu carrinho está vazio</p>
+                  <p className="text-slate-500 text-sm">Que tal começar com um Kit Essencial?</p>
+                </div>
+              ) : (
+                cart.map((item, idx) => (
+                  <div key={idx} className="flex gap-4 p-4 bg-slate-50 rounded-2xl border border-slate-100 group">
+                    <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center shadow-sm flex-shrink-0">
+                      {item.icon}
+                    </div>
+                    <div className="flex-grow">
+                      <h4 className="font-bold text-slate-800 text-sm leading-tight mb-1">{item.nome}</h4>
+                      <div className="text-[#1B2588] font-black text-sm">R$ {item.preco.toFixed(2)}</div>
+                    </div>
+                    <button 
+                      onClick={() => removeFromCart(idx)}
+                      className="p-2 h-fit text-slate-300 hover:text-red-500 transition-colors"
+                    >
+                      <X className="w-4 h-4" />
+                    </button>
+                  </div>
+                ))
+              )}
+            </div>
+
+            {cart.length > 0 && (
+              <div className="p-8 bg-slate-50 border-t border-slate-100">
+                <div className="flex justify-between items-center mb-6">
+                  <span className="text-slate-500 font-bold uppercase text-xs tracking-widest">Total Estimado</span>
+                  <span className="text-2xl font-black text-slate-900">R$ {totalCart.toFixed(2)}</span>
+                </div>
+                <button 
+                  onClick={handleCheckout}
+                  className="w-full bg-[#1B2588] text-white py-5 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-blue-900 transition-all shadow-xl shadow-blue-900/20 flex items-center justify-center gap-3"
+                >
+                  <MessageCircle className="w-5 h-5" />
+                  Finalizar via WhatsApp
+                </button>
+                <p className="text-center text-[10px] text-slate-400 mt-4 uppercase font-bold tracking-widest">
+                  O pagamento e entrega serão combinados no chat.
+                </p>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
 
       {/* Floating Cart Button (Mobile) */}
       {cart.length > 0 && !isCartOpen && (
-        <motion.button
-          initial={{ scale: 0, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
+        <button
           onClick={() => setIsCartOpen(true)}
           className="fixed bottom-8 right-8 z-[90] bg-[#F1B524] text-white w-16 h-16 rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform"
         >
@@ -605,7 +558,7 @@ const Shop: React.FC = () => {
           <span className="absolute -top-1 -right-1 bg-[#1B2588] text-white text-[10px] font-black w-6 h-6 rounded-full flex items-center justify-center border-2 border-white">
             {cart.length}
           </span>
-        </motion.button>
+        </button>
       )}
     </section>
   );
