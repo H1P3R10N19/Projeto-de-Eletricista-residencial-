@@ -26,6 +26,7 @@ const Navbar: React.FC = () => {
                 { label: 'Home', href: '#home' },
                 { label: 'Sobre', href: '#sobre' },
                 { label: 'Serviços', href: '#servicos' },
+                { label: 'Compras', href: '#compras' },
                 { label: 'Contato', href: '#contato' }
               ].map((link) => (
                 <a 
